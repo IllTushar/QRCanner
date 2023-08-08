@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         MobileNo = findViewById(R.id.mobileNo);
         Email = findViewById(R.id.email);
         Dob=findViewById(R.id.dob);
-        distanceFromQR = findViewById(R.id.distanceFromQR);
+//        distanceFromQR = findViewById(R.id.distanceFromQR);
 
         fullName.setText(Name);
         MobileNo.setText(mobileNo);
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 //                     lot =longitude;
 //                     sharedPreference.saveData("lat",String.valueOf(lat));
 //                     sharedPreference.saveData("lot",String.valueOf(lot));
-                    if (calculateDistance(28.6142246767,77.3849460483,latitude,longitude)<=1){
-                        double roundedValue = Math.round(Distance * 100.0) / 100.0;
-                        distanceFromQR.setText(String.valueOf(roundedValue)+" meter");
-                    }
+//                    if (calculateDistance(28.6142246767,77.3849460483,latitude,longitude)<=1){
+//                       // double roundedValue = Math.round(Distance * 100.0) / 100.0;
+//                        //distanceFromQR.setText(String.valueOf(roundedValue)+" meter");
+//                    }
 
 
                    // Toast.makeText(MainActivity.this, "Latitude: " + latitude + ", Longitude: " + longitude, Toast.LENGTH_SHORT).show();
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
        String Long = String.valueOf(longitude);
        int id = Integer.parseInt(sharedPreference.getData("employeeId"));
         ApiInterface apiInterface = new RetrofitClient().getRetrofit().create(ApiInterface.class);
-        Call<checkOutModel>call = apiInterface.checkOut("Bearer "+token,"28.6142246767","77.3849460483",Lat,Long,id);
+        Call<checkOutModel>call = apiInterface.checkOut("Bearer "+token,Lat,Long,"28.618612","77.392016",id);
         call.enqueue(new Callback<checkOutModel>() {
             @Override
             public void onResponse(Call<checkOutModel> call, Response<checkOutModel> response) {
